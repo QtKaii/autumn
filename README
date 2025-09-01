@@ -5,7 +5,7 @@ Completed requirements exactly to spec at 12:33.
 
 Overview
 - Simple Swing app to search for an instrument (EN/ES), show an image + description, and play a random sound clip.
-- Code is organized into packages: `instruments/`, `gui/`, `exceptions/`, `logging/`, and a small `i18n/` console test.
+ - Code is organized into packages: `instruments/`, `gui/`, `exceptions/`, `logging/`, and a small `internationalization/` console test.
 
 Design Choices
 - Instrument model: Abstract `Instrument` with concrete `Guitar`, `Piano`, `Drum`. Each defines name, image path, and default description.
@@ -54,4 +54,4 @@ Testing
     - `java -cp out:. tests.I18nCoverageTest`
 
 Notes
-- If running from an IDE, mark `internationalization/` as a resources folder or add the project root to the run classpath so bundles are found.
+ - If running from an IDE, mark `internationalization/` as a resources folder or add the project root to the run classpath so bundles are found.
