@@ -13,6 +13,3 @@ build/
 
 # Java
 *.class
-
-# Generated logs by AssignmentLogger
-*_logDetails.txt

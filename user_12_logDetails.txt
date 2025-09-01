@@ -1,0 +1,367 @@
+Sept 01, 2025 12:28:57 PM logging.AssignmentLogger logMain
+INFO: 
+
+Main method call: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 12:28:58 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+
+----Machine and version details----
+
+gui.InstrumentGUI
+Ran from: C:\Users\user\autumn
+Ran by: user
+OS Details:Windows 11 amd64
+Java details:24.0.2 C:\Program Files\Java\jdk-24
+
+----Assignment Summary Details---- 
+
+Total Constructors = 1
+Total Fields = 10
+Total Methods = 12
+
+ ----FULL METHOD DETAILS---- 
+
+TOTAL METHODS = 12
+
+***METHOD 1
+public void main 
+Parameter 1 is type  Array of java.lang.String;
+***METHOD 2
+private void lambda$main$0 No-parameters
+***METHOD 3
+private void initUI No-parameters
+***METHOD 4
+private void wireActions No-parameters
+***METHOD 5
+private void lambda$wireActions$1 
+Parameter 1 is type java.awt.event.ActionEvent
+***METHOD 6
+private void displayInstrument 
+Parameter 1 is type instruments.Instrument
+***METHOD 7
+private void lambda$wireActions$2 
+Parameter 1 is type java.awt.event.ActionEvent
+***METHOD 8
+private void toggleLanguage No-parameters
+***METHOD 9
+private void lambda$wireActions$0 
+Parameter 1 is type java.awt.event.ActionEvent
+***METHOD 10
+private void updateTexts No-parameters
+***METHOD 11
+private void performSearch No-parameters
+***METHOD 12
+private void lambda$wireActions$3 
+Parameter 1 is type java.awt.event.ActionEvent
+
+ ----FULL FIELDS DETAILS----
+
+TOTAL COUNT=10
+***FIELD 1
+private javax.swing.JTextField inputField
+***FIELD 2
+private javax.swing.JButton searchButton
+***FIELD 3
+private javax.swing.JButton playButton
+***FIELD 4
+private javax.swing.JButton langButton
+***FIELD 5
+private javax.swing.JLabel imageLabel
+***FIELD 6
+private javax.swing.JLabel descriptionLabel
+***FIELD 7
+private javax.swing.JLabel errorLabel
+***FIELD 8
+private java.util.Locale currentLocale
+***FIELD 9
+private java.util.ResourceBundle bundle
+***FIELD 10
+private instruments.Instrument currentInstrument
+
+----FULL CONSTRUCTOR(S) DETAILS----
+
+TOTAL COUNT=1
+***CONSTRUCTOR 1
+gui.InstrumentGUI No-parameters
+
+----LIST OF RECENT METHOD CALLS---
+
+Method entry: gui.InstrumentGUI.initUI:35
+
+Sept 01, 2025 12:28:58 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.initUI:86
+
+Sept 01, 2025 12:28:58 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.wireActions:90
+
+Sept 01, 2025 12:28:58 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.wireActions:105
+
+Sept 01, 2025 12:28:58 PM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call at: gui.InstrumentGUI.<init>:31
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.performSearch:109
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.InstrumentFactory.fromInput:13
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call at: instruments.Instrument.<init>:12
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call at: instruments.Guitar.<init>:13
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.InstrumentFactory.fromInput:62
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.performSearch:139
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.displayInstrument:143
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: instruments.Instrument.getImagePath:34
+
+Sept 01, 2025 12:29:12 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: instruments.Instrument.getImagePath:35
+
+Sept 01, 2025 12:29:13 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.displayInstrument:174
+
+Sept 01, 2025 12:29:15 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.lambda$wireActions$2:94
+
+Sept 01, 2025 12:29:15 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: instruments.Guitar.playSound:18
+
+Sept 01, 2025 12:29:15 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.playRandomClipByStem:20
+
+Sept 01, 2025 12:29:15 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.findMatchingSounds:32
+
+Sept 01, 2025 12:29:15 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.findMatchingSounds:41
+
+Sept 01, 2025 12:29:15 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.playClipFromFile:46
+
+Sept 01, 2025 12:29:16 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.playClipFromFile:54
+
+Sept 01, 2025 12:29:16 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.playRandomClipByStem:28
+
+Sept 01, 2025 12:29:16 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: instruments.Guitar.playSound:20
+
+Sept 01, 2025 12:29:16 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.lambda$wireActions$2:98
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.lambda$wireActions$3:101
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.toggleLanguage:178
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.updateTexts:186
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.displayInstrument:143
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: instruments.Instrument.getImagePath:34
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: instruments.Instrument.getImagePath:35
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.displayInstrument:174
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.updateTexts:195
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.toggleLanguage:182
+
+Sept 01, 2025 12:29:22 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.lambda$wireActions$3:103
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.lambda$wireActions$2:94
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: instruments.Guitar.playSound:18
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.playRandomClipByStem:20
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.findMatchingSounds:32
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.findMatchingSounds:41
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.playClipFromFile:46
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.playClipFromFile:54
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.SoundPlayer.playRandomClipByStem:28
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: instruments.Guitar.playSound:20
+
+Sept 01, 2025 12:29:24 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.lambda$wireActions$2:98
+
+Sept 01, 2025 12:29:25 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.performSearch:109
+
+Sept 01, 2025 12:29:25 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.InstrumentFactory.fromInput:13
+
+Sept 01, 2025 12:29:25 PM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call at: instruments.Instrument.<init>:12
+
+Sept 01, 2025 12:29:25 PM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call at: instruments.Guitar.<init>:13
+
+Sept 01, 2025 12:29:25 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.InstrumentFactory.fromInput:62
+
+Sept 01, 2025 12:29:25 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.performSearch:139
+
+Sept 01, 2025 12:29:26 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.displayInstrument:143
+
+Sept 01, 2025 12:29:26 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: instruments.Instrument.getImagePath:34
+
+Sept 01, 2025 12:29:26 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: instruments.Instrument.getImagePath:35
+
+Sept 01, 2025 12:29:26 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.displayInstrument:174
+
+Sept 01, 2025 12:29:30 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.performSearch:109
+
+Sept 01, 2025 12:29:30 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.InstrumentFactory.fromInput:13
+
+Sept 01, 2025 12:29:30 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: instruments.InstrumentFactory.fromInput:42
+
+Sept 01, 2025 12:29:30 PM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call at: exceptions.UnrecognizedInstrumentException.<init>:8
+
+Sept 01, 2025 12:29:30 PM logging.AssignmentLogger logCatchException
+INFO: 
+Exception exceptions.UnrecognizedInstrumentException: Instrument not recognized: d Instrument not recognized: d
+
+Sept 01, 2025 12:29:30 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.performSearch:139
+
