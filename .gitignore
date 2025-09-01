@@ -1,0 +1,18 @@
+# Build outputs
+/out/
+/bin/
+target/
+build/
+
+# IDE metadata
+.idea/
+.project
+.classpath
+.settings/
+.vscode/
+
+# Java
+*.class
+
+# Generated logs by AssignmentLogger
+*_logDetails.txt
