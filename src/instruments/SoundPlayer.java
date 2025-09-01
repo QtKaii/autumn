@@ -13,9 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Small utility responsible for locating and playing audio clips from disk
+ * using the Java Sound API. Clips are expected to be uncompressed WAV files.
+ */
 class SoundPlayer {
     private static final Random RNG = new Random();
 
+    /**
+     * Picks a random WAV in resources/sounds whose filename starts with the
+     * provided stem and plays it via a {@link Clip}.
+     *
+     * @param stem filename prefix (e.g. "Guitar")
+     */
     static void playRandomClipByStem(String stem) {
         AssignmentLogger.logStaticMethodEntry();
         List<File> candidates = findMatchingSounds(stem);
@@ -28,6 +38,9 @@ class SoundPlayer {
         AssignmentLogger.logStaticMethodExit();
     }
 
+    /**
+     * Returns all WAV files in resources/sounds that start with the given stem.
+     */
     private static List<File> findMatchingSounds(String stem) {
         AssignmentLogger.logStaticMethodEntry();
         List<File> matches = new ArrayList<>();
@@ -42,6 +55,10 @@ class SoundPlayer {
         return matches;
     }
 
+    /**
+     * Opens and starts the given WAV file as a {@link Clip}. Playback starts
+     * asynchronously and this method returns immediately.
+     */
     private static void playClipFromFile(File file) {
         AssignmentLogger.logStaticMethodEntry();
         try (AudioInputStream audioIn = AudioSystem.getAudioInputStream(file)) {

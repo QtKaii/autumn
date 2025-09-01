@@ -10,6 +10,11 @@ import java.awt.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Swing-based user interface for searching instruments (EN/ES), previewing an
+ * image and description, and playing the associated sound. Text content comes
+ * from ResourceBundles to support runtime language switching.
+ */
 public class InstrumentGUI extends JFrame {
     private JTextField inputField;
     private JButton searchButton;
@@ -24,6 +29,10 @@ public class InstrumentGUI extends JFrame {
 
     private Instrument currentInstrument = null;
 
+    /**
+     * Builds the frame and wires listeners. Heavy work (loading image) is
+     * deferred using a short {@code SwingWorker} to keep the EDT responsive.
+     */
     public InstrumentGUI() {
         super();
         initUI();
@@ -31,6 +40,9 @@ public class InstrumentGUI extends JFrame {
         AssignmentLogger.logConstructor(this);
     }
 
+    /**
+     * Creates and arranges all Swing components.
+     */
     private void initUI() {
         AssignmentLogger.logMethodEntry(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +75,7 @@ public class InstrumentGUI extends JFrame {
         centerPanel.add(descriptionLabel, BorderLayout.SOUTH);
         add(centerPanel, BorderLayout.CENTER);
 
-        // Error label on top, SWitch language and play buttons below
+        // Error label on top, Switch language and play buttons below
         JPanel bottomPanel = new JPanel(new BorderLayout(8, 8));
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(0, 16, 16, 16));
         errorLabel = new JLabel(" ");
@@ -86,6 +98,9 @@ public class InstrumentGUI extends JFrame {
         AssignmentLogger.logMethodExit(this);
     }
 
+    /**
+     * Hooks up event handlers for buttons and the text field.
+     */
     private void wireActions() {
         AssignmentLogger.logMethodEntry(this);
         searchButton.addActionListener(_ -> performSearch());
@@ -105,6 +120,11 @@ public class InstrumentGUI extends JFrame {
         AssignmentLogger.logMethodExit(this);
     }
 
+    /**
+     * Reads user input, resolves it to a known instrument (via
+     * {@link InstrumentFactory}), then delays 500ms before updating the UI to
+     * simulate work and avoid abrupt transitions.
+     */
     private void performSearch() {
         AssignmentLogger.logMethodEntry(this);
         errorLabel.setText(" ");
@@ -139,6 +159,10 @@ public class InstrumentGUI extends JFrame {
         AssignmentLogger.logMethodExit(this);
     }
 
+    /**
+     * Updates the image and localized description for the selected instrument.
+     * Scaling preserves aspect ratio and fits the available preview area.
+     */
     private void displayInstrument(Instrument instrument) {
         AssignmentLogger.logMethodEntry(this);
         if (instrument == null) {
@@ -174,6 +198,9 @@ public class InstrumentGUI extends JFrame {
         AssignmentLogger.logMethodExit(this);
     }
 
+    /**
+     * Toggles between English and Spanish and refreshes all UI labels.
+     */
     private void toggleLanguage() {
         AssignmentLogger.logMethodEntry(this);
         currentLocale = currentLocale.getLanguage().equals("en") ? Locale.forLanguageTag("es") : Locale.ENGLISH;
@@ -182,6 +209,9 @@ public class InstrumentGUI extends JFrame {
         AssignmentLogger.logMethodExit(this);
     }
 
+    /**
+     * Reloads all visible text from the current ResourceBundle.
+     */
     private void updateTexts() {
         AssignmentLogger.logMethodEntry(this);
         setTitle(bundle.getString("gui.title") + " (EN/ES)");

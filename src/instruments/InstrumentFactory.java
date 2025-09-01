@@ -8,7 +8,20 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+/**
+ * Factory that converts free-text input (English or Spanish) into a concrete
+ * {@link Instrument} instance. It relies on the i18n bundles to resolve the
+ * localized names and also accepts raw keys like "guitar".
+ */
 public class InstrumentFactory {
+    /**
+     * Parses the user input and returns the corresponding instrument.
+     *
+     * @param rawInput user-entered instrument name
+     * @param locale   locale used to normalize case and match i18n labels
+     * @return the matching instrument instance
+     * @throws UnrecognizedInstrumentException when the input cannot be mapped
+     */
     public static Instrument fromInput(String rawInput, Locale locale) throws UnrecognizedInstrumentException {
         AssignmentLogger.logStaticMethodEntry();
         if (rawInput == null) {
@@ -63,4 +76,3 @@ public class InstrumentFactory {
         return result;
     }
 }
-

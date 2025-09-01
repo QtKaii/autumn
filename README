@@ -3,3 +3,42 @@ Student Number: B00159763
 Started at 09:00; 
 Completed requirements exactly to spec at 12:33.
 
+Overview
+- Simple Swing app to search for an instrument (EN/ES), show an image + description, and play a random sound clip.
+- Code is organized into packages: `instruments/`, `gui/`, `exceptions/`, `logging/`, and a small `i18n/` console test.
+
+Design Choices
+- Instrument model: Abstract `Instrument` with concrete `Guitar`, `Piano`, `Drum`. Each defines name, image path, and default description.
+- Factory: `InstrumentFactory.fromInput(String, Locale)` maps user text (English/Spanish and raw keys) to a concrete instrument using the ResourceBundles.
+- GUI: `InstrumentGUI` uses a clean BorderLayout – top input row, large image preview, description, and two wide buttons (Play / Switch Language).
+- Internationalization: Java `ResourceBundle` with `internationalization/MessagesBundle_en.properties` and `_es.properties` for labels and instrument descriptions.
+- Audio playback: `SoundPlayer` locates files under `resources/sounds` by stem (e.g., Guitar1.wav..N) and plays a random clip via `javax.sound.sampled.Clip`.
+- Logging: Uniform use of `AssignmentLogger` across constructors, methods, and static methods. Logs now include the calling class.method:line for readability.
+
+Why these choices
+- Separation of concerns: UI is decoupled from lookup logic (factory) and playback details (sound utility).
+- Testability: Factory logic can be exercised without the GUI. I added `I18nTest` to verify bundles independently.
+- Simplicity: File-system resources avoid classpath packaging complexity for this assignment; easy to inspect and swap sounds/images.
+- UX: A short 500ms delay (SwingWorker) softens transitions and keeps the EDT responsive.
+
+How to Run
+- Compile:
+  - `javac -d out src/logging/AssignmentLogger.java src/exceptions/*.java src/instruments/*.java src/gui/InstrumentGUI.java src/Main.java`
+- Run (ensure bundles are on the classpath by adding project root):
+  - Windows PowerShell: `java -cp "out;." Main`
+  - CMD: `java -cp out;. Main`
+  - macOS/Linux: `java -cp out:. Main`
+- Resources expected at runtime:
+  - Sounds: `resources/sounds/Guitar*.wav`, `Piano*.wav`, `Drum*.wav`
+  - Images: `resources/images/guitar.jpg`, `piano.jpg`, `drum.jpg`
+  - Bundles: `internationalization/MessagesBundle_en.properties`, `_es.properties`
+
+Notes & Limitations
+- Java Sound prefers PCM WAV; compressed formats (e.g., MP3) are not supported by default.
+- Playback starts asynchronously; clips are not explicitly closed after playback ends (ok for short clips; could be extended to manage lifecycles).
+- If you package as a JAR, ensure the `internationalization/` and `resources/` paths are added to the runtime classpath or embedded with a resource loader.
+
+Future Improvements
+- Replace file-system lookups with classpath resource loading for easier packaging.
+- Add simple unit tests for `InstrumentFactory` and i18n key coverage.
+- Provide UI affordances (placeholder text, disabled state cues, and better error surfacing).

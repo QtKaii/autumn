@@ -2,7 +2,14 @@ package instruments;
 
 import logging.AssignmentLogger;
 
+/**
+ * Concrete instrument representing a guitar. Uses the shared {@link SoundPlayer}
+ * to play a random "Guitar*.wav" clip from the resources/sounds folder.
+ */
 public class Guitar extends Instrument {
+    /**
+     * Creates a Guitar with default name, description, image and sound stem.
+     */
     public Guitar() {
         super(
             "Guitar",
@@ -14,10 +21,12 @@ public class Guitar extends Instrument {
     }
 
     @Override
+    /**
+     * Triggers playback of a random guitar clip. Non-blocking.
+     */
     public void playSound() {
         AssignmentLogger.logMethodEntry(this);
         SoundPlayer.playRandomClipByStem("Guitar");
         AssignmentLogger.logMethodExit(this);
     }
 }
-

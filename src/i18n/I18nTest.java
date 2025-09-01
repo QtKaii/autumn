@@ -5,7 +5,14 @@ import logging.AssignmentLogger;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Tiny console utility to verify that our i18n bundles load correctly and
+ * return the expected strings for English and Spanish.
+ */
 public class I18nTest {
+    /**
+     * Prints a subset of keys for EN and ES to stdout.
+     */
     public static void main(String[] args) {
         AssignmentLogger.logMain();
 
@@ -19,6 +26,12 @@ public class I18nTest {
         printBundle("ES", esBundle);
     }
 
+    /**
+     * Prints common GUI labels from the provided bundle with a prefix label.
+     *
+     * @param label   prefix to distinguish outputs
+     * @param bundle  resource bundle to read
+     */
     private static void printBundle(String label, ResourceBundle bundle) {
         AssignmentLogger.logStaticMethodEntry();
         System.out.println("[" + label + "]");
