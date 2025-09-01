@@ -23,7 +23,10 @@ public class I18nCoverageTest {
             "instrument.guitar.desc",
             "instrument.piano.desc",
             "instrument.drum.desc",
-            "error.invalid"
+            "error.invalid",
+            "error.noAudio",
+            "error.soundsMissing",
+            "error.imageMissing"
     };
 
     public static void main(String[] args) {
@@ -62,4 +65,3 @@ public class I18nCoverageTest {
         return misses;
     }
 }
-

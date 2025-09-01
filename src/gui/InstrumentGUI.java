@@ -7,9 +7,14 @@ import logging.AssignmentLogger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.border.Border;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 
 /**
  * Swing-based user interface for searching instruments (EN/ES), previewing an
@@ -54,7 +59,7 @@ public class InstrumentGUI extends JFrame {
         AssignmentLogger.logMethodEntry(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(12, 12));
-        setTitle(bundle.getString("gui.title") + " (EN/ES)");
+        setTitle(bundle.getString("gui.title") + " " + bundle.getString("gui.titleSuffix"));
 
         // Text field centered with Search button to the right
         JPanel topPanel = new JPanel(new BorderLayout(8, 8));
@@ -134,20 +139,11 @@ public class InstrumentGUI extends JFrame {
      */
     private void wireActions() {
         AssignmentLogger.logMethodEntry(this);
-        searchButton.addActionListener(_ -> performSearch());
-        inputField.addActionListener(_ -> performSearch());
-        playButton.addActionListener(_ -> {
-            AssignmentLogger.logMethodEntry(this);
-            if (currentInstrument != null) {
-                currentInstrument.playSound();
-            }
-            AssignmentLogger.logMethodExit(this);
-        });
-        langButton.addActionListener(_ -> {
-            AssignmentLogger.logMethodEntry(this);
-            toggleLanguage();
-            AssignmentLogger.logMethodExit(this);
-        });
+        ActionListener searchAction = new SearchAction();
+        searchButton.addActionListener(searchAction);
+        inputField.addActionListener(searchAction);
+        playButton.addActionListener(new PlayAction());
+        langButton.addActionListener(new ToggleLanguageAction());
         AssignmentLogger.logMethodExit(this);
     }
 
@@ -219,6 +215,12 @@ public class InstrumentGUI extends JFrame {
         descriptionLabel.setText(desc);
 
         String path = instrument.getImagePath();
+        java.io.File imgFile = new java.io.File(path);
+        if (!imgFile.exists()) {
+            showError(bundle.getString("error.imageMissing"));
+            AssignmentLogger.logMethodExit(this);
+            return;
+        }
         ImageIcon icon = new ImageIcon(path);
         if (icon.getIconWidth() > 0 && icon.getIconHeight() > 0) {
             // scale to fit preferred size while preserving aspect ratio
@@ -253,7 +255,7 @@ public class InstrumentGUI extends JFrame {
      */
     private void updateTexts() {
         AssignmentLogger.logMethodEntry(this);
-        setTitle(bundle.getString("gui.title") + " (EN/ES)");
+        setTitle(bundle.getString("gui.title") + " " + bundle.getString("gui.titleSuffix"));
         searchButton.setText(bundle.getString("gui.searchButton"));
         playButton.setText(bundle.getString("gui.playButton"));
         langButton.setText(bundle.getString("gui.langButton"));
@@ -310,6 +312,84 @@ public class InstrumentGUI extends JFrame {
         inputField.setToolTipText(null);
         if (defaultInputBorder != null) inputField.setBorder(defaultInputBorder);
         AssignmentLogger.logMethodExit(this);
+    }
+
+    // ---------- Inner listener classes ----------
+    private class SearchAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            AssignmentLogger.logMethodEntry(this);
+            performSearch();
+            AssignmentLogger.logMethodExit(this);
+        }
+    }
+
+    private class PlayAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            AssignmentLogger.logMethodEntry(this);
+            clearError();
+            if (currentInstrument == null) {
+                showError(bundle.getString("error.invalid"));
+                AssignmentLogger.logMethodExit(this);
+                return;
+            }
+            if (!isAudioOutputAvailable()) {
+                showError(bundle.getString("error.noAudio"));
+                AssignmentLogger.logMethodExit(this);
+                return;
+            }
+            if (!hasSoundFilesFor(currentInstrument)) {
+                showError(bundle.getString("error.soundsMissing"));
+                AssignmentLogger.logMethodExit(this);
+                return;
+            }
+            currentInstrument.playSound();
+            AssignmentLogger.logMethodExit(this);
+        }
+    }
+
+    private class ToggleLanguageAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            AssignmentLogger.logMethodEntry(this);
+            toggleLanguage();
+            AssignmentLogger.logMethodExit(this);
+        }
+    }
+
+    // ---------- Environment checks ----------
+    private boolean isAudioOutputAvailable() {
+        AssignmentLogger.logMethodEntry(this);
+        try {
+            Clip c = AudioSystem.getClip();
+            c.close();
+            AssignmentLogger.logMethodExit(this);
+            return true;
+        } catch (LineUnavailableException | IllegalArgumentException ex) {
+            logging.AssignmentLogger.logCatchException(ex);
+            AssignmentLogger.logMethodExit(this);
+            return false;
+        }
+    }
+
+    private boolean hasSoundFilesFor(Instrument instrument) {
+        AssignmentLogger.logMethodEntry(this);
+        // soundPath is like "resources/sounds/Guitar"; take as stem
+        String stem = instrument.getSoundPath();
+        java.io.File dir = new java.io.File("resources/sounds");
+        String prefix;
+        if (stem != null && stem.contains("/")) {
+            prefix = stem.substring(stem.lastIndexOf('/') + 1);
+        } else if (stem != null && stem.contains("\\")) {
+            prefix = stem.substring(stem.lastIndexOf('\\') + 1);
+        } else {
+            prefix = stem != null ? stem : "";
+        }
+        java.io.File[] files = dir.listFiles((d, name) -> name.startsWith(prefix) && name.toLowerCase().endsWith(".wav"));
+        boolean ok = files != null && files.length > 0;
+        AssignmentLogger.logMethodExit(this);
+        return ok;
     }
 
     public static void main(String[] args) {
