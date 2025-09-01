@@ -1,19 +1,13 @@
-import instruments.Drum;
-import instruments.Guitar;
-import instruments.Piano;
+import gui.InstrumentGUI;
 import logging.AssignmentLogger;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
         AssignmentLogger.logMain();
-
-        Guitar guitar = new Guitar();
-        Piano piano = new Piano();
-        Drum drum = new Drum();
-
-        guitar.playSound();
-        piano.playSound();
-        drum.playSound();
+        SwingUtilities.invokeLater(() -> {
+            InstrumentGUI gui = new InstrumentGUI();
+            gui.setVisible(true);
+        });
     }
 }
-
