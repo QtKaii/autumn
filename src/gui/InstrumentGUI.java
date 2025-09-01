@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.border.Border;
 
 /**
  * Swing-based user interface for searching instruments (EN/ES), previewing an
@@ -28,6 +29,12 @@ public class InstrumentGUI extends JFrame {
     private ResourceBundle bundle = ResourceBundle.getBundle("internationalization.MessagesBundle", currentLocale);
 
     private Instrument currentInstrument = null;
+
+    // UI affordances
+    private String placeholderText;
+    private boolean usingPlaceholder = false;
+    private Color normalInputColor;
+    private Border defaultInputBorder;
 
     /**
      * Builds the frame and wires listeners. Heavy work (loading image) is
@@ -54,6 +61,30 @@ public class InstrumentGUI extends JFrame {
         JPanel inputRow = new JPanel(new BorderLayout(8, 8));
         inputField = new JTextField();
         inputField.setColumns(28);
+        // Placeholder setup
+        normalInputColor = inputField.getForeground();
+        defaultInputBorder = inputField.getBorder();
+        placeholderText = computePlaceholder();
+        activatePlaceholder();
+        // Toggle placeholder on focus
+        inputField.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override public void focusGained(java.awt.event.FocusEvent e) {
+                AssignmentLogger.logMethodEntry(this);
+                if (usingPlaceholder) {
+                    inputField.setText("");
+                    inputField.setForeground(normalInputColor);
+                    usingPlaceholder = false;
+                }
+                AssignmentLogger.logMethodExit(this);
+            }
+            @Override public void focusLost(java.awt.event.FocusEvent e) {
+                AssignmentLogger.logMethodEntry(this);
+                if (inputField.getText().trim().isEmpty()) {
+                    activatePlaceholder();
+                }
+                AssignmentLogger.logMethodExit(this);
+            }
+        });
         inputRow.add(inputField, BorderLayout.CENTER);
         searchButton = new JButton(bundle.getString("gui.searchButton"));
         inputRow.add(searchButton, BorderLayout.EAST);
@@ -127,12 +158,18 @@ public class InstrumentGUI extends JFrame {
      */
     private void performSearch() {
         AssignmentLogger.logMethodEntry(this);
-        errorLabel.setText(" ");
+        clearError();
         descriptionLabel.setText(" ");
         imageLabel.setIcon(null);
         playButton.setEnabled(false);
 
-        final String text = inputField.getText();
+        final String text = inputField.getText().trim();
+        if (usingPlaceholder || text.isEmpty()) {
+            showError(bundle.getString("error.invalid"));
+            AssignmentLogger.logMethodExit(this);
+            return;
+        }
+        setBusy(true);
         try {
             Instrument found = InstrumentFactory.fromInput(text, currentLocale);
             currentInstrument = found;
@@ -147,14 +184,16 @@ public class InstrumentGUI extends JFrame {
                 @Override
                 protected void done() {
                     displayInstrument(currentInstrument);
+                    setBusy(false);
                 }
             };
             worker.execute();
             playButton.setEnabled(true);
         } catch (UnrecognizedInstrumentException ex) {
             logging.AssignmentLogger.logCatchException(ex);
-            errorLabel.setText(bundle.getString("error.invalid"));
+            showError(bundle.getString("error.invalid"));
             currentInstrument = null;
+            setBusy(false);
         }
         AssignmentLogger.logMethodExit(this);
     }
@@ -218,10 +257,58 @@ public class InstrumentGUI extends JFrame {
         searchButton.setText(bundle.getString("gui.searchButton"));
         playButton.setText(bundle.getString("gui.playButton"));
         langButton.setText(bundle.getString("gui.langButton"));
+        // Refresh placeholder text to current language
+        placeholderText = computePlaceholder();
+        if (usingPlaceholder || inputField.getText().trim().isEmpty()) {
+            activatePlaceholder();
+        }
         if (currentInstrument != null) {
             // this refreshes language-specific text
             displayInstrument(currentInstrument);
         }
+        AssignmentLogger.logMethodExit(this);
+    }
+
+    // ---------- UI helpers (with logging) ----------
+    private String computePlaceholder() {
+        AssignmentLogger.logMethodEntry(this);
+        String s = bundle.getString("gui.inputLabel");
+        if (s != null && s.endsWith(":")) s = s.substring(0, s.length() - 1);
+        AssignmentLogger.logMethodExit(this);
+        return s;
+    }
+
+    private void activatePlaceholder() {
+        AssignmentLogger.logMethodEntry(this);
+        usingPlaceholder = true;
+        inputField.setForeground(Color.GRAY);
+        inputField.setText(placeholderText);
+        AssignmentLogger.logMethodExit(this);
+    }
+
+    private void setBusy(boolean busy) {
+        AssignmentLogger.logMethodEntry(this);
+        searchButton.setEnabled(!busy);
+        inputField.setEnabled(!busy);
+        langButton.setEnabled(!busy);
+        setCursor(busy ? Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR) : Cursor.getDefaultCursor());
+        AssignmentLogger.logMethodExit(this);
+    }
+
+    private void showError(String message) {
+        AssignmentLogger.logMethodEntry(this);
+        errorLabel.setText(message);
+        inputField.setToolTipText(message);
+        inputField.setBorder(BorderFactory.createLineBorder(Color.RED));
+        Toolkit.getDefaultToolkit().beep();
+        AssignmentLogger.logMethodExit(this);
+    }
+
+    private void clearError() {
+        AssignmentLogger.logMethodEntry(this);
+        errorLabel.setText(" ");
+        inputField.setToolTipText(null);
+        if (defaultInputBorder != null) inputField.setBorder(defaultInputBorder);
         AssignmentLogger.logMethodExit(this);
     }
 

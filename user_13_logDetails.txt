@@ -1,29 +1,219 @@
-Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logMain
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMain
 INFO: 
 
 Main method call: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
 
-Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logStaticMethodEntry
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+
+----Machine and version details----
+
+gui.InstrumentGUI
+Ran from: C:\Users\user\autumn
+Ran by: user
+OS Details:Windows 11 amd64
+Java details:24.0.2 C:\Program Files\Java\jdk-24
+
+----Assignment Summary Details---- 
+
+Total Constructors = 1
+Total Fields = 14
+Total Methods = 17
+
+ ----FULL METHOD DETAILS---- 
+
+TOTAL METHODS = 17
+
+***METHOD 1
+private void lambda$main$0 No-parameters
+***METHOD 2
+private java.lang.String computePlaceholder No-parameters
+***METHOD 3
+private void activatePlaceholder No-parameters
+***METHOD 4
+private void wireActions No-parameters
+***METHOD 5
+private void toggleLanguage No-parameters
+***METHOD 6
+private void lambda$wireActions$3 
+Parameter 1 is type java.awt.event.ActionEvent
+***METHOD 7
+private void performSearch No-parameters
+***METHOD 8
+private void lambda$wireActions$0 
+Parameter 1 is type java.awt.event.ActionEvent
+***METHOD 9
+private void lambda$wireActions$2 
+Parameter 1 is type java.awt.event.ActionEvent
+***METHOD 10
+private void lambda$wireActions$1 
+Parameter 1 is type java.awt.event.ActionEvent
+***METHOD 11
+private void updateTexts No-parameters
+***METHOD 12
+private void displayInstrument 
+Parameter 1 is type instruments.Instrument
+***METHOD 13
+public void main 
+Parameter 1 is type  Array of java.lang.String;
+***METHOD 14
+private void clearError No-parameters
+***METHOD 15
+private void setBusy 
+Parameter 1 is type boolean
+***METHOD 16
+private void initUI No-parameters
+***METHOD 17
+private void showError 
+Parameter 1 is type java.lang.String
+
+ ----FULL FIELDS DETAILS----
+
+TOTAL COUNT=14
+***FIELD 1
+private javax.swing.JTextField inputField
+***FIELD 2
+private javax.swing.JButton searchButton
+***FIELD 3
+private javax.swing.JButton playButton
+***FIELD 4
+private javax.swing.JButton langButton
+***FIELD 5
+private javax.swing.JLabel imageLabel
+***FIELD 6
+private javax.swing.JLabel descriptionLabel
+***FIELD 7
+private javax.swing.JLabel errorLabel
+***FIELD 8
+private java.util.Locale currentLocale
+***FIELD 9
+private java.util.ResourceBundle bundle
+***FIELD 10
+private instruments.Instrument currentInstrument
+***FIELD 11
+private java.lang.String placeholderText
+***FIELD 12
+private boolean usingPlaceholder
+***FIELD 13
+private java.awt.Color normalInputColor
+***FIELD 14
+private javax.swing.border.Border defaultInputBorder
+
+----FULL CONSTRUCTOR(S) DETAILS----
+
+TOTAL COUNT=1
+***CONSTRUCTOR 1
+gui.InstrumentGUI No-parameters
+
+----LIST OF RECENT METHOD CALLS---
+
+Method entry: gui.InstrumentGUI.initUI:54
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.computePlaceholder:274
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.computePlaceholder:277
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.activatePlaceholder:282
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.activatePlaceholder:286
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.initUI:129
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.wireActions:136
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.wireActions:151
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call at: gui.InstrumentGUI.<init>:47
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI$1.focusGained:72
+
+Sept 01, 2025 1:47:52 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI$1.focusGained:78
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.performSearch:160
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.clearError:308
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.clearError:312
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.setBusy:290
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.setBusy:295
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logStaticMethodEntry
 INFO: 
 
 Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
- at: tests.I18nCoverageTest.checkBundle:44
+ at: instruments.InstrumentFactory.fromInput:26
 
-Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logStaticMethodExit
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logStaticMethodExit
 INFO: 
 
 Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
- at: tests.I18nCoverageTest.checkBundle:61
+ at: instruments.InstrumentFactory.fromInput:55
 
-Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logStaticMethodEntry
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logConstructor
 INFO: 
+ Constructor call at: exceptions.UnrecognizedInstrumentException.<init>:17
 
-Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
- at: tests.I18nCoverageTest.checkBundle:44
-
-Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logStaticMethodExit
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logCatchException
 INFO: 
+Exception exceptions.UnrecognizedInstrumentException: Instrument not recognized: kjbkjh Instrument not recognized: kjbkjh
 
-Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
- at: tests.I18nCoverageTest.checkBundle:61
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.showError:299
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.showError:304
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI.setBusy:290
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.setBusy:295
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI.performSearch:198
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry: gui.InstrumentGUI$1.focusLost:81
+
+Sept 01, 2025 1:47:54 PM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit: gui.InstrumentGUI$1.focusLost:85
 
