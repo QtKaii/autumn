@@ -1,0 +1,117 @@
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logMain
+INFO: 
+
+Main method call: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logConstructor
+INFO: 
+
+----Machine and version details----
+
+instruments.Guitar
+Ran from: C:\Users\user\autumn
+Ran by: user
+OS Details:Windows 11 amd64
+Java details:24.0.2 C:\Program Files\Java\jdk-24
+
+----Assignment Summary Details---- 
+
+Total Constructors = 1
+Total Fields = 0
+Total Methods = 1
+
+ ----FULL METHOD DETAILS---- 
+
+TOTAL METHODS = 1
+
+***METHOD 1
+public void playSound No-parameters
+
+ ----FULL FIELDS DETAILS----
+
+TOTAL COUNT=0
+
+----FULL CONSTRUCTOR(S) DETAILS----
+
+TOTAL COUNT=1
+***CONSTRUCTOR 1
+instruments.Guitar No-parameters
+
+----LIST OF RECENT METHOD CALLS---
+
+ Constructor call 
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call 
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call 
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call 
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call 
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logConstructor
+INFO: 
+ Constructor call 
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry
+
+Sept 01, 2025 11:25:45 AM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 11:25:46 AM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 11:25:46 AM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit
+
+Sept 01, 2025 11:25:46 AM logging.AssignmentLogger logMethodEntry
+INFO: 
+Method entry
+
+Sept 01, 2025 11:25:46 AM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 11:25:46 AM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 11:25:46 AM logging.AssignmentLogger logMethodExit
+INFO: 
+Method exit
+
