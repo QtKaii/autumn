@@ -1,0 +1,29 @@
+Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logMain
+INFO: 
+
+Main method call: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+
+Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: tests.I18nCoverageTest.checkBundle:44
+
+Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: tests.I18nCoverageTest.checkBundle:61
+
+Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logStaticMethodEntry
+INFO: 
+
+Static method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: tests.I18nCoverageTest.checkBundle:44
+
+Sept 01, 2025 1:21:56 PM logging.AssignmentLogger logStaticMethodExit
+INFO: 
+
+Static method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls
+ at: tests.I18nCoverageTest.checkBundle:61
+

@@ -40,5 +40,18 @@ Notes & Limitations
 
 Future Improvements
 - Replace file-system lookups with classpath resource loading for easier packaging.
-- Add simple unit tests for `InstrumentFactory` and i18n key coverage.
 - Provide UI affordances (placeholder text, disabled state cues, and better error surfacing).
+
+Testing
+- Compile tests:
+  - `javac -d out src/logging/AssignmentLogger.java src/exceptions/*.java src/instruments/*.java src/tests/*.java`
+- Run tests (ensure project root on classpath for bundles):
+  - Windows PowerShell:
+    - `java -cp "out;." tests.InstrumentFactoryTest`
+    - `java -cp "out;." tests.I18nCoverageTest`
+  - macOS/Linux:
+    - `java -cp out:. tests.InstrumentFactoryTest`
+    - `java -cp out:. tests.I18nCoverageTest`
+
+Notes
+- If running from an IDE, mark `internationalization/` as a resources folder or add the project root to the run classpath so bundles are found.
