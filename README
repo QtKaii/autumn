@@ -36,11 +36,10 @@ How to Run
 Notes & Limitations
 - Java Sound prefers PCM WAV; compressed formats (e.g., MP3) are not supported by default.
 - Playback starts asynchronously; clips are not explicitly closed after playback ends (ok for short clips; could be extended to manage lifecycles).
-- If you package as a JAR, ensure the `internationalization/` and `resources/` paths are added to the runtime classpath or embedded with a resource loader.
+- If you package as a JAR, ensure the `internationalization/` and `resources/` paths are added to the runtime classpath or embedded with a resource loader. (This is because I did this project in VSCode as its my default IDE, and I did not use a java project, rather java source files and javac)
 
 Future Improvements
 - Replace file-system lookups with classpath resource loading for easier packaging.
-- Provide UI affordances (placeholder text, disabled state cues, and better error surfacing).
 
 Testing
 - Compile tests:

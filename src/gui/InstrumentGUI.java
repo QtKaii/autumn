@@ -386,7 +386,7 @@ public class InstrumentGUI extends JFrame {
         } else {
             prefix = stem != null ? stem : "";
         }
-        java.io.File[] files = dir.listFiles((d, name) -> name.startsWith(prefix) && name.toLowerCase().endsWith(".wav"));
+        java.io.File[] files = dir.listFiles((_, name) -> name.startsWith(prefix) && name.toLowerCase().endsWith(".wav"));
         boolean ok = files != null && files.length > 0;
         AssignmentLogger.logMethodExit(this);
         return ok;
