@@ -57,14 +57,16 @@ public class AssignmentLogger {
 	 * Makes a log entry at the start of the method
 	 */
 	public static synchronized void logMethodEntry(Object classId) {
-		log.log(Level.INFO, "\n" + getDetails(classId) + "Method entry\n");
+		String where = getCallerSummary();
+		log.log(Level.INFO, "\n" + getDetails(classId) + "Method entry: " + where + "\n");
 	}
 
 	/**
 	 * Makes a log entry at the end of the method
 	 */
 	public static synchronized void logMethodExit(Object classId) {
-		log.log(Level.INFO, "\n" + getDetails(classId) + "Method exit\n");
+		String where = getCallerSummary();
+		log.log(Level.INFO, "\n" + getDetails(classId) + "Method exit: " + where + "\n");
 	}
 
 	/**
@@ -72,7 +74,8 @@ public class AssignmentLogger {
 	 * created
 	 */
 	public synchronized static void logStaticMethodEntry() {
-		log.log(Level.INFO, "\n" + "\nStatic method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls" + "\n");
+		String where = getCallerSummary();
+		log.log(Level.INFO, "\n" + "\nStatic method entry: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls" + "\n at: " + where + "\n");
 	}
 
 	/**
@@ -80,14 +83,16 @@ public class AssignmentLogger {
 	 * created
 	 */
 	public synchronized static void logStaticMethodExit() {
-		log.log(Level.INFO, "\n" + "\nStatic method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls" + "\n");
+		String where = getCallerSummary();
+		log.log(Level.INFO, "\n" + "\nStatic method exit: static calls generate minimal logs, call logConstructor(this) in constructor to log full class details - must be after any 'super' calls" + "\n at: " + where + "\n");
 	}
 
 	/**
 	 * Makes a log entry at the beginning of a constructor
 	 */
 	public static synchronized void logConstructor(Object classId) {
-		log.log(Level.INFO, "\n" + getDetails(classId) + " Constructor call \n");
+		String where = getCallerSummary();
+		log.log(Level.INFO, "\n" + getDetails(classId) + " Constructor call at: " + where + "\n");
 	}
 
 	/**
@@ -146,6 +151,25 @@ public class AssignmentLogger {
 			return "";
 		}
 
+	}
+
+	/**
+	 * Returns a concise description of the immediate caller (class.method:line).
+	 * Added By Kai (I wanted to know what methods were being called, thank me later)
+	 */
+	private static String getCallerSummary() {
+		try {
+			StackTraceElement[] st = Thread.currentThread().getStackTrace();
+			for (StackTraceElement el : st) {
+				String cls = el.getClassName();
+				if (!cls.equals(AssignmentLogger.class.getName()) && !cls.equals(Thread.class.getName())) {
+					return cls + "." + el.getMethodName() + ":" + el.getLineNumber();
+				}
+			}
+		} catch (Exception ignored) {
+			// fallthrough
+		}
+		return "unknown";
 	}
 	
 	/**
