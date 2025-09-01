@@ -1,6 +1,5 @@
 package logging; //Requires to be in the package logging
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -9,12 +8,10 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Vector;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -244,7 +241,7 @@ public class AssignmentLogger {
 		Vector<String> constructorNames = new Vector<String>();
 		Vector<String> constructorParameters = new Vector<String>();
 
-		Constructor[] constructors = classId.getClass().getConstructors();
+		Constructor<?>[] constructors = classId.getClass().getConstructors();
 		
 		completeString+="\n\n----FULL CONSTRUCTOR(S) DETAILS----\n\n" + "TOTAL COUNT=" + constructors.length;
 
