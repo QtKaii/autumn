@@ -29,6 +29,7 @@ class SoundPlayer {
     }
 
     private static List<File> findMatchingSounds(String stem) {
+        AssignmentLogger.logStaticMethodEntry();
         List<File> matches = new ArrayList<>();
         File dir = new File("resources/sounds");
         File[] files = dir.listFiles((_, name) -> name.startsWith(stem) && name.toLowerCase().endsWith(".wav"));
@@ -37,17 +38,20 @@ class SoundPlayer {
                 matches.add(f);
             }
         }
+        AssignmentLogger.logStaticMethodExit();
         return matches;
     }
 
     private static void playClipFromFile(File file) {
+        AssignmentLogger.logStaticMethodEntry();
         try (AudioInputStream audioIn = AudioSystem.getAudioInputStream(file)) {
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
             clip.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             AssignmentLogger.logCatchException(e);
+        } finally {
+            AssignmentLogger.logStaticMethodExit();
         }
     }
 }
-
