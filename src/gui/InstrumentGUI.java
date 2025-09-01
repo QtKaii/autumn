@@ -145,7 +145,15 @@ public class InstrumentGUI extends JFrame {
             AssignmentLogger.logMethodExit(this);
             return;
         }
-        descriptionLabel.setText(instrument.getDescription());
+        String key = instrument.getClass().getSimpleName().toLowerCase(java.util.Locale.ROOT);
+        String descKey = "instrument." + key + ".desc";
+        String desc;
+        try {
+            desc = bundle.getString(descKey);
+        } catch (Exception __ignored) {
+            desc = instrument.getDescription();
+        }
+        descriptionLabel.setText(desc);
 
         String path = instrument.getImagePath();
         ImageIcon icon = new ImageIcon(path);
@@ -180,6 +188,10 @@ public class InstrumentGUI extends JFrame {
         searchButton.setText(bundle.getString("gui.searchButton"));
         playButton.setText(bundle.getString("gui.playButton"));
         langButton.setText(bundle.getString("gui.langButton"));
+        if (currentInstrument != null) {
+            // this refreshes language-specific text
+            displayInstrument(currentInstrument);
+        }
         AssignmentLogger.logMethodExit(this);
     }
 
